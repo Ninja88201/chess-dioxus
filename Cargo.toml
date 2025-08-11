@@ -1,0 +1,34 @@
+[package]
+name = "chess-dioxus"
+version = "0.1.0"
+authors = ["Ninja88201 <aethermerrien@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dioxus = { version = "0.6.0", features = [] }
+chess_lib = { git = "https://github.com/Ninja88201/chess_lib.git" }
+chess_engine = { git = "https://github.com/Ninja88201/chess_engine.git" }
+tokio = { version = "1.47.1", features = ["rt"] }
+
+[features]
+default = ["web"]
+# The feature that are only required for the web = ["dioxus/web"] build target should be optional and only enabled in the web = ["dioxus/web"] feature
+web = ["dioxus/web"]
+# The feature that are only required for the desktop = ["dioxus/desktop"] build target should be optional and only enabled in the desktop = ["dioxus/desktop"] feature
+desktop = ["dioxus/desktop"]
+# The feature that are only required for the mobile = ["dioxus/mobile"] build target should be optional and only enabled in the mobile = ["dioxus/mobile"] feature
+mobile = ["dioxus/mobile"]
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
